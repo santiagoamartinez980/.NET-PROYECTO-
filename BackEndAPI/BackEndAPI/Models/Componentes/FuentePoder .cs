@@ -5,3 +5,4 @@
         public int PotenciaWatts { get; set; }
     }
 }
+//hola
