@@ -21,6 +21,8 @@ namespace BackEndAPI.Models
         [Phone]
         public string Telefono { get; set; } = null!;
 
+        public string HashContraseña { get; set; } = string.Empty;
+
         public ICollection<Ensamblaje> Ensamblajes { get; set; } = new List<Ensamblaje>();
     }
 }
