@@ -7,18 +7,20 @@ namespace BackEndAPI.Models
         public int Id { get; set; } 
 
         [Required, MaxLength(50)]
-        public string Nombres { get; set; }
+        public string Nombres { get; set; } = null!;
 
         [Required, MaxLength(50)]
-        public string Apellidos { get; set; }
+        public string Apellidos { get; set; } = null!;
 
         [Required, EmailAddress]
-        public string Email { get; set; }
+        public string Correo { get; set; } = null!;
 
         [Required]
-        public string Documento { get; set; } 
-
+        public string Documento { get; set; } = null!;
+        [Required]
         [Phone]
-        public string Telefono { get; set; } 
+        public string Telefono { get; set; } = null!;
+
+        public ICollection<Ensamblaje> Ensamblajes { get; set; } = new List<Ensamblaje>();
     }
 }

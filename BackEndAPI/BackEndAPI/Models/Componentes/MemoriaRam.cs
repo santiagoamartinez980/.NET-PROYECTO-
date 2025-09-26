@@ -1,6 +1,6 @@
 ﻿namespace BackEndAPI.Models.Componentes
 {
-    public class MemoriaRam: Componente
+    public class MemoriaRAM: Componente
     {
         public string TipoMemoria { get; set; }
     }
