@@ -16,7 +16,7 @@ namespace BackEndAPI.Models
         public PlacaBase PlacaBase { get; set; } = null!;
 
         public int MemoriaRamId { get; set; }
-        public MemoriaRam MemoriaRam { get; set; } = null!;
+        public MemoriaRAM MemoriaRAM { get; set; } = null!;
 
         public int? TarjetaGraficaId { get; set; }  
         public TarjetaGrafica? TarjetaGrafica { get; set; }

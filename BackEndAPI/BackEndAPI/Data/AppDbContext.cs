@@ -1,6 +1,7 @@
 ﻿using BackEndAPI.Models;
 using BackEndAPI.Models.Componentes;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace BackEndAPI.Data
 {
@@ -17,43 +18,52 @@ namespace BackEndAPI.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            //todos los componentes en una tabla
+            // Configurar herencia TPH
             modelBuilder.Entity<Componente>()
-                .HasDiscriminator<string>("Discriminator")
-                .HasValue<Procesador>("Procesador")
-                .HasValue<PlacaBase>("PlacaBase")
-                .HasValue<MemoriaRAM>("MemoriaRAM")
-                .HasValue<TarjetaGrafica>("TarjetaGrafica")
-                .HasValue<Almacenamiento>("Almacenamiento")
-                .HasValue<FuentePoder>("FuentePoder");
+            .HasDiscriminator<string>("Discriminator");
 
-            //Usuario único por correo y documento
-            modelBuilder.Entity<Usuario>()
-                .HasIndex(u => u.Correo)
-                .IsUnique();
-            modelBuilder.Entity<Usuario>()
-                .HasIndex(u => u.Documento)
-                .IsUnique();
-
-            //Relación Usuario -> Ensamblajes
-            modelBuilder.Entity<Ensamblaje>()
-                .HasOne(e => e.Usuario)
-                .WithMany(u => u.Ensamblajes)
-                .HasForeignKey(e => e.UsuarioId);
-
-            //Relación Ensamblaje -> Procesador
+            // Evitar múltiples cascadas en Ensamblajes
             modelBuilder.Entity<Ensamblaje>()
                 .HasOne(e => e.Procesador)
                 .WithMany()
                 .HasForeignKey(e => e.ProcesadorId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict); // 👈 Importante
 
-            //Relación Ensamblaje -> PlacaBase
             modelBuilder.Entity<Ensamblaje>()
                 .HasOne(e => e.PlacaBase)
                 .WithMany()
                 .HasForeignKey(e => e.PlacaBaseId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Ensamblaje>()
+                .HasOne(e => e.MemoriaRAM)
+                .WithMany()
+                .HasForeignKey(e => e.MemoriaRamId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Ensamblaje>()
+                .HasOne(e => e.TarjetaGrafica)
+                .WithMany()
+                .HasForeignKey(e => e.TarjetaGraficaId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Ensamblaje>()
+                .HasOne(e => e.Almacenamiento)
+                .WithMany()
+                .HasForeignKey(e => e.AlmacenamientoId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Ensamblaje>()
+                .HasOne(e => e.FuentePoder)
+                .WithMany()
+                .HasForeignKey(e => e.FuentePoderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Ensamblaje>()
+                .HasOne(e => e.Usuario)
+                .WithMany(u => u.Ensamblajes)
+                .HasForeignKey(e => e.UsuarioId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -1,0 +1,212 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Migrations\\20250926131715_CreacionInicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BackEndAPI\\Migrations\\20250926131715_CreacionInicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|c:\\users\\alejandro\\desktop\\.net project\\backendapi\\backendapi\\models\\componentes\\almacenamiento .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|solutionrelative:backendapi\\models\\componentes\\almacenamiento .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|c:\\users\\alejandro\\desktop\\.net project\\backendapi\\backendapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|solutionrelative:backendapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|c:\\users\\alejandro\\desktop\\.net project\\backendapi\\backendapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|solutionrelative:backendapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|c:\\users\\alejandro\\desktop\\.net project\\backendapi\\backendapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|solutionrelative:backendapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Migrations\\20250926130811_CreacionInicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BackEndAPI\\Migrations\\20250926130811_CreacionInicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|c:\\users\\alejandro\\desktop\\.net project\\backendapi\\backendapi\\models\\componentes\\fuentepoder .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|solutionrelative:backendapi\\models\\componentes\\fuentepoder .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|c:\\users\\alejandro\\desktop\\.net project\\backendapi\\backendapi\\models\\componente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|solutionrelative:backendapi\\models\\componente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|c:\\users\\alejandro\\desktop\\.net project\\backendapi\\backendapi\\models\\ensamblaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|solutionrelative:backendapi\\models\\ensamblaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|c:\\users\\alejandro\\desktop\\.net project\\backendapi\\backendapi\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|solutionrelative:backendapi\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|c:\\users\\alejandro\\desktop\\.net project\\backendapi\\backendapi\\models\\componentes\\memoriaram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86415E35-293E-4A4C-9FFB-1E5AAF413633}|BackEndAPI\\BackEndAPI.csproj|solutionrelative:backendapi\\models\\componentes\\memoriaram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Ensamblaje.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Models\\Ensamblaje.cs",
+              "RelativeDocumentMoniker": "BackEndAPI\\Models\\Ensamblaje.cs",
+              "ToolTip": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Models\\Ensamblaje.cs",
+              "RelativeToolTip": "BackEndAPI\\Models\\Ensamblaje.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAuwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T03:12:54.953Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Almacenamiento .cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Models\\Componentes\\Almacenamiento .cs",
+              "RelativeDocumentMoniker": "BackEndAPI\\Models\\Componentes\\Almacenamiento .cs",
+              "ToolTip": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Models\\Componentes\\Almacenamiento .cs",
+              "RelativeToolTip": "BackEndAPI\\Models\\Componentes\\Almacenamiento .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T13:20:00.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20250926131715_CreacionInicial.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Migrations\\20250926131715_CreacionInicial.cs",
+              "RelativeDocumentMoniker": "BackEndAPI\\Migrations\\20250926131715_CreacionInicial.cs",
+              "ToolTip": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Migrations\\20250926131715_CreacionInicial.cs",
+              "RelativeToolTip": "BackEndAPI\\Migrations\\20250926131715_CreacionInicial.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T13:17:15.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "20250926130811_CreacionInicial.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Migrations\\20250926130811_CreacionInicial.cs",
+              "RelativeDocumentMoniker": "BackEndAPI\\Migrations\\20250926130811_CreacionInicial.cs",
+              "ToolTip": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Migrations\\20250926130811_CreacionInicial.cs",
+              "RelativeToolTip": "BackEndAPI\\Migrations\\20250926130811_CreacionInicial.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T13:08:12.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FuentePoder .cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Models\\Componentes\\FuentePoder .cs",
+              "RelativeDocumentMoniker": "BackEndAPI\\Models\\Componentes\\FuentePoder .cs",
+              "ToolTip": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Models\\Componentes\\FuentePoder .cs",
+              "RelativeToolTip": "BackEndAPI\\Models\\Componentes\\FuentePoder .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T13:06:29.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Program.cs",
+              "RelativeDocumentMoniker": "BackEndAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Program.cs",
+              "RelativeToolTip": "BackEndAPI\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T23:50:21.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Componente.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Models\\Componente.cs",
+              "RelativeDocumentMoniker": "BackEndAPI\\Models\\Componente.cs",
+              "ToolTip": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Models\\Componente.cs",
+              "RelativeToolTip": "BackEndAPI\\Models\\Componente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T22:38:12.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "BackEndAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\appsettings.json",
+              "RelativeToolTip": "BackEndAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-25T04:25:26.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MemoriaRam.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Models\\Componentes\\MemoriaRam.cs",
+              "RelativeDocumentMoniker": "BackEndAPI\\Models\\Componentes\\MemoriaRam.cs",
+              "ToolTip": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Models\\Componentes\\MemoriaRam.cs",
+              "RelativeToolTip": "BackEndAPI\\Models\\Componentes\\MemoriaRam.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T23:06:50.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "BackEndAPI\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "BackEndAPI\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAmwCcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T22:04:40.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "BackEndAPI\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\Alejandro\\Desktop\\.NET PROJECT\\BackEndAPI\\BackEndAPI\\Models\\Usuario.cs",
+              "RelativeToolTip": "BackEndAPI\\Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T16:32:24.701Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
