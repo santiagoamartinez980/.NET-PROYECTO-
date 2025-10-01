@@ -4,6 +4,7 @@ using BackEndAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEndAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250930145426_AgregarRolAUsuario")]
+    partial class AgregarRolAUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,10 +197,6 @@ namespace BackEndAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TipoAlmacenamiento")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("TipoMemoria")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -214,9 +213,6 @@ namespace BackEndAPI.Migrations
             modelBuilder.Entity("BackEndAPI.Models.Componentes.Procesador", b =>
                 {
                     b.HasBaseType("BackEndAPI.Models.Componente");
-
-                    b.Property<int>("ConsumoWatts")
-                        .HasColumnType("int");
 
                     b.Property<string>("Socket")
                         .IsRequired()
@@ -237,12 +233,6 @@ namespace BackEndAPI.Migrations
 
                     b.Property<int>("ConsumoWatts")
                         .HasColumnType("int");
-
-                    b.ToTable("Componentes", t =>
-                        {
-                            t.Property("ConsumoWatts")
-                                .HasColumnName("TarjetaGrafica_ConsumoWatts");
-                        });
 
                     b.HasDiscriminator().HasValue("TarjetaGrafica");
                 });

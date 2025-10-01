@@ -4,5 +4,7 @@
     {
         public string Socket { get; set; }
         public string TipoMemoria { get; set; }
+
+        public string TipoAlmacenamiento { get; set; }
     }
 }

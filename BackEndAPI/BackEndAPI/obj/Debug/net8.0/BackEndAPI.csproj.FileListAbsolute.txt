@@ -172,3 +172,4 @@ C:\Users\Alejandro\Desktop\.NET PROJECT\BackEndAPI\BackEndAPI\obj\Debug\net8.0\r
 C:\Users\Alejandro\Desktop\.NET PROJECT\BackEndAPI\BackEndAPI\obj\Debug\net8.0\BackEndAPI.pdb
 C:\Users\Alejandro\Desktop\.NET PROJECT\BackEndAPI\BackEndAPI\obj\Debug\net8.0\BackEndAPI.genruntimeconfig.cache
 C:\Users\Alejandro\Desktop\.NET PROJECT\BackEndAPI\BackEndAPI\obj\Debug\net8.0\ref\BackEndAPI.dll
+C:\Users\Alejandro\Desktop\.NET PROJECT\BackEndAPI\BackEndAPI\bin\Debug\net8.0\BCrypt.Net-Next.dll

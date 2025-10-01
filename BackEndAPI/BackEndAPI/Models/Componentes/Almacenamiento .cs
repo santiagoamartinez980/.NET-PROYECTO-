@@ -2,7 +2,7 @@
 {
     public class Almacenamiento : Componente
     {
-        public string Tipo { get; set; }  
-        public string Interfaz { get; set; }
+        public string Tipo { get; set; }
+        public string Interfaz { get; set; } = "SATA";
     }
 }

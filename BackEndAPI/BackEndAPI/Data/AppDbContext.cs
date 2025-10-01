@@ -1,5 +1,4 @@
 ﻿using BackEndAPI.Models;
-using BackEndAPI.Models.Componentes;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
 

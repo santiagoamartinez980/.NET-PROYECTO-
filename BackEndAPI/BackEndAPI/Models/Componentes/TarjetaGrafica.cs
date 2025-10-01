@@ -3,5 +3,6 @@
     public class TarjetaGrafica : Componente
     {
         public int ConsumoWatts { get; set; }
+        
     }
 }

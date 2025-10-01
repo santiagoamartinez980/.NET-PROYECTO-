@@ -23,6 +23,9 @@ namespace BackEndAPI.Models
 
         public string HashContraseña { get; set; } = string.Empty;
 
+        public string Rol { get; set; } = "Usuario";
+
+
         public ICollection<Ensamblaje> Ensamblajes { get; set; } = new List<Ensamblaje>();
     }
 }
