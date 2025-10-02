@@ -1,0 +1,50 @@
+# --- Archivos de Visual Studio ---
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# --- Salidas de compilación ---
+bin/
+obj/
+Debug/
+Release/
+
+# --- Paquetes NuGet ---
+*.nupkg
+packages/
+*.snupkg
+
+# --- Logs y cachés ---
+*.log
+*.tlog
+*.cache
+*.vspscc
+*.vssscc
+
+# --- Configuración temporal ---
+*.tmp
+*.temp
+*.dbmdl
+*.jfm
+
+# --- Archivos de publicación ---
+publish/
+out/
+
+# --- Sistema operativo ---
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# --- Node / Angular ---
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- IDEs ---
+.idea/
+*.iml
