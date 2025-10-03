@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BackEndAPI.Services.Implementacion
 {
-    public class UsuarioService : IUsuario
+    public class UsuarioServices : IUsuario
     {
         private readonly AppDbContext _context;
 
-        public UsuarioService(AppDbContext context)
+        public UsuarioServices(AppDbContext context)
         {
             _context = context;
         }

@@ -1,14 +1,16 @@
-using BackEndAPI.Models;
 using BackEndAPI.Data;
-using Microsoft.EntityFrameworkCore;
+using BackEndAPI.Models;
+using AutoMapper;
+using BackEndAPI.Services.Contrato.Componentes;
+using BackEndAPI.Services.Contrato.EnsamblajeService;
+using BackEndAPI.Services.Contrato.Usuarios;
+using BackEndAPI.Services.Implementacion;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-
+using BackEndAPI.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
-
-//
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -17,6 +19,19 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CadenaDeConnexion"))
 );
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+builder.Services.AddScoped<IAdminComponetes, ComponenteServices>();
+builder.Services.AddScoped<IComponentes, ComponenteServices>();
+builder.Services.AddScoped<IConsultaComponentes, ComponenteServices>();
+
+
+builder.Services.AddScoped<IComponentesCompleto, ComponenteServices>();
+
+builder.Services.AddScoped<IEnsamblaje, EnsamblajeServices>();
+
+builder.Services.AddScoped<IUsuario, UsuarioServices>();
 
 var app = builder.Build();
 
