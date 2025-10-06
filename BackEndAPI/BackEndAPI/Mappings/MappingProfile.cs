@@ -32,5 +32,4 @@ namespace BackEndAPI.Mappings
             #endregion
         }
     }
-    }
 }

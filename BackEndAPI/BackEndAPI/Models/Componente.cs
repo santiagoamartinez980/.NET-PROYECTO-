@@ -1,6 +1,6 @@
 ﻿namespace BackEndAPI.Models
 {
-    public abstract class Componente
+    public class Componente
     {
         public int Id { get; set; }       
         public string Nombre { get; set; } = null!;

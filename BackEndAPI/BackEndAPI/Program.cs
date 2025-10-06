@@ -13,7 +13,7 @@ using BackEndAPI.Mappings;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfile>());
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>

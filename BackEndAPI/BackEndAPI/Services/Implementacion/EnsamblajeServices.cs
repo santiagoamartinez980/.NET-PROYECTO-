@@ -1,5 +1,7 @@
 ﻿using BackEndAPI.Data;
+using BackEndAPI.DTOs.Ensamblaje;
 using BackEndAPI.Models;
+using BackEndAPI.Models.Componentes;
 using BackEndAPI.Services.Contrato.EnsamblajeService;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,27 +16,21 @@ namespace BackEndAPI.Services.Implementacion
             _dbContext = dbContext;
         }
 
-        public async Task<Ensamblaje> CrearEnsamblaje(int usuarioId, List<int> componentesIds)
+        public async Task<Ensamblaje> CrearEnsamblaje(CrearEnsamblajeDto dto)
         {
-            // Buscar usuario
-            var usuario = await _dbContext.Usuarios.FindAsync(usuarioId);
+            var usuario = await _dbContext.Usuarios.FindAsync(dto.UsuarioId);
             if (usuario == null)
                 throw new Exception("Usuario no encontrado");
 
-            // Buscar componentes
-            var componentes = await _dbContext.Componentes
-                                              .Where(c => componentesIds.Contains(c.Id))
-                                              .ToListAsync();
-
-            if (componentes == null || componentes.Count == 0)
-                throw new Exception("No se encontraron componentes válidos");
-
-            // Crear ensamblaje
             var ensamblaje = new Ensamblaje
             {
-                UsuarioId = usuarioId,
-                Usuario = usuario,
-                Componentes = componentes
+                UsuarioId = dto.UsuarioId,
+                ProcesadorId = dto.ProcesadorId,
+                PlacaBaseId = dto.PlacaBaseId,
+                MemoriaRamId = dto.MemoriaRamId,
+                TarjetaGraficaId = dto.TarjetaGraficaId,
+                AlmacenamientoId = dto.AlmacenamientoId,
+                FuentePoderId = dto.FuentePoderId
             };
 
             _dbContext.Ensamblajes.Add(ensamblaje);
@@ -42,6 +38,7 @@ namespace BackEndAPI.Services.Implementacion
 
             return ensamblaje;
         }
+
 
         public async Task<Ensamblaje?> ObtenerEnsamblajePorId(int id)
         {
@@ -87,6 +84,11 @@ namespace BackEndAPI.Services.Implementacion
             _dbContext.Ensamblajes.Update(modelo);
             await _dbContext.SaveChangesAsync();
             return modelo;
+        }
+
+        public Task<Ensamblaje> CrearEnsamblaje(int usuarioId, List<int> componentesIds)
+        {
+            throw new NotImplementedException();
         }
     }
 }

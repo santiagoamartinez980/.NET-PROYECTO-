@@ -8,6 +8,7 @@ namespace BackEndAPI.Services.Contrato.Componentes
     {
         
         Task<Componente?> GetComponentePorId(int id);
+        Task<List<Componente>> BuscarComponentes(string nombre);
 
         Task<List<Componente>> GetComponentesPorTipo(string tipo);
         Task<List<Componente>> BuscarPorMarca(string marca);
