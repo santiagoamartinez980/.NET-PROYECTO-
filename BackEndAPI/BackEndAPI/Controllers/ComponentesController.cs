@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using BackEndAPI.Models;
-using BackEndAPI.Models.Componentes;
+using BackEndAPI.DTOs.Componentes;
 using BackEndAPI.Services.Contrato.Componentes;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace BackEndAPI.Controllers
 {
@@ -15,23 +11,20 @@ namespace BackEndAPI.Controllers
     public class ComponentesController : ControllerBase
     {
         private readonly IComponentesCompleto _service;
-        private readonly IMapper _mapper;
-        
-        public ComponentesController(IComponentesCompleto service, IMapper mapper)
+
+        public ComponentesController(IComponentesCompleto service)
         {
             _service = service;
-            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Componente>>> GetComponentes()
+        public async Task<IActionResult> GetComponentes()
         {
-            var lista = await _service.GetComponentes();
-            return Ok(lista);
+            return Ok(await _service.GetComponentes());
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Componente>> GetComponentePorId(int id)
+        public async Task<IActionResult> GetComponentePorId(int id)
         {
             var comp = await _service.GetComponentePorId(id);
             if (comp == null) return NotFound();
@@ -39,123 +32,95 @@ namespace BackEndAPI.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<ActionResult<List<Componente>>> BuscarComponentes([FromQuery] string nombre)
+        public async Task<IActionResult> BuscarComponentes([FromQuery] string nombre)
         {
-            var lista = await _service.BuscarComponentes(nombre);
-            return Ok(lista);
+            return Ok(await _service.BuscarComponentes(nombre));
         }
 
         [HttpGet("marca/{marca}")]
-        public async Task<ActionResult<List<Componente>>> BuscarPorMarca(string marca)
+        public async Task<IActionResult> BuscarPorMarca(string marca)
         {
-            var lista = await _service.BuscarPorMarca(marca);
-            return Ok(lista);
+            return Ok(await _service.BuscarPorMarca(marca));
         }
 
         [HttpGet("tipo/{tipo}")]
-        public async Task<ActionResult<List<Componente>>> GetComponentesPorTipo(string tipo)
+        public async Task<IActionResult> GetComponentesPorTipo(string tipo)
         {
-            var lista = await _service.GetComponentesPorTipo(tipo);
-            return Ok(lista);
+            return Ok(await _service.GetComponentesPorTipo(tipo));
         }
 
-        #region ADMIN CRUD
-        //[Authorize(Roles = "Admin")]
         [HttpPost("{tipo}")]
-        public async Task<ActionResult<Componente>> AddComponente(string tipo, [FromBody] JsonElement modelo)
+        public async Task<IActionResult> AddComponente(string tipo, [FromBody] JsonElement modelo)
         {
-            var options = new JsonSerializerOptions
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
+            ComponenteDto? dto = tipo.ToLower() switch
             {
-                PropertyNameCaseInsensitive = true
+                "procesador" => JsonSerializer.Deserialize<ProcesadorDto>(modelo.ToString(), options),
+                "placabase" => JsonSerializer.Deserialize<PlacaBaseDto>(modelo.ToString(), options),
+                "memoriaram" => JsonSerializer.Deserialize<MemoriaRamDto>(modelo.ToString(), options),
+                "tarjetagrafica" => JsonSerializer.Deserialize<TarjetaGraficaDto>(modelo.ToString(), options),
+                "almacenamiento" => JsonSerializer.Deserialize<AlmacenamientoDto>(modelo.ToString(), options),
+                "fuentepoder" => JsonSerializer.Deserialize<FuentePoderDto>(modelo.ToString(), options),
+                _ => null
             };
 
-            Componente componente;
+            if (dto == null) return BadRequest("Tipo de componente no válido.");
 
-            switch (tipo.ToLower())
-            {
-                case "procesador":
-                    componente = JsonSerializer.Deserialize<Procesador>(modelo.ToString(), options)!;
-                    break;
-                case "placabase":
-                    componente = JsonSerializer.Deserialize<PlacaBase>(modelo.ToString(), options)!;
-                    break;
-                case "memoriaram":
-                    componente = JsonSerializer.Deserialize<MemoriaRAM>(modelo.ToString(), options)!;
-                    break;
-                case "tarjetagrafica":
-                    componente = JsonSerializer.Deserialize<TarjetaGrafica>(modelo.ToString(), options)!;
-                    break;
-                case "almacenamiento":
-                    componente = JsonSerializer.Deserialize<Almacenamiento>(modelo.ToString(), options)!;
-                    break;
-                case "fuentepoder":
-                    componente = JsonSerializer.Deserialize<FuentePoder>(modelo.ToString(), options)!;
-                    break;
-                default:
-                    return BadRequest("Tipo de componente no válido.");
-            }
-
-            var creado = await _service.AddComponente(componente);
+            var creado = await _service.AddComponente(dto);
             return CreatedAtAction(nameof(GetComponentePorId), new { id = creado.Id }, creado);
         }
-        //[Authorize(Roles = "Admin")]
+
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<Componente>> UpdateComponente(int id, [FromBody] Componente modelo)
+        public async Task<IActionResult> Update(int id, [FromBody] ComponenteDto dto)
         {
-            if (modelo == null || modelo.Id != id) return BadRequest();
-            var actualizado = await _service.Update(modelo);
+            if (dto == null || dto.Id != id) return BadRequest();
+            var actualizado = await _service.Update(dto);
             return Ok(actualizado);
         }
-        //[Authorize(Roles = "Admin")]
+
         [HttpDelete("{id:int}")]
-        public async Task<ActionResult> DeleteComponente(int id)
+        public async Task<IActionResult> DeleteComponente(int id)
         {
             var ok = await _service.Delete(id);
             if (!ok) return NotFound();
             return NoContent();
         }
-        #endregion
 
         [HttpGet("procesadores")]
-        public async Task<ActionResult<List<Procesador>>> GetProcesadores()
+        public async Task<IActionResult> GetProcesadores()
         {
-            var lista = await _service.GetProcesadores();
-            return Ok(lista);
+            return Ok(await _service.GetProcesadores());
         }
 
         [HttpGet("placas-compatibles/{procesadorId:int}")]
-        public async Task<ActionResult<List<PlacaBase>>> GetPlacasCompatibles(int procesadorId)
+        public async Task<IActionResult> GetPlacasCompatibles(int procesadorId)
         {
-            var lista = await _service.GetPlacasCompatibles(procesadorId);
-            return Ok(lista);
+            return Ok(await _service.GetPlacasCompatibles(procesadorId));
         }
 
         [HttpGet("memorias-compatibles/{placaBaseId:int}")]
-        public async Task<ActionResult<List<MemoriaRAM>>> GetMemoriasCompatibles(int placaBaseId)
+        public async Task<IActionResult> GetMemoriasCompatibles(int placaBaseId)
         {
-            var lista = await _service.GetMemoriasCompatibles(placaBaseId);
-            return Ok(lista);
+            return Ok(await _service.GetMemoriasCompatibles(placaBaseId));
         }
 
         [HttpGet("tarjetas-compatibles/{placaBaseId:int}")]
-        public async Task<ActionResult<List<TarjetaGrafica>>> GetTarjetasCompatibles(int placaBaseId)
+        public async Task<IActionResult> GetTarjetasCompatibles(int placaBaseId)
         {
-            var lista = await _service.GetTarjetasCompatibles(placaBaseId);
-            return Ok(lista);
+            return Ok(await _service.GetTarjetasCompatibles(placaBaseId));
         }
 
         [HttpGet("almacenamientos-compatibles/{placaBaseId:int}")]
-        public async Task<ActionResult<List<Almacenamiento>>> GetAlmacenamientosCompatibles(int placaBaseId)
+        public async Task<IActionResult> GetAlmacenamientosCompatibles(int placaBaseId)
         {
-            var lista = await _service.GetAlmacenamientosCompatibles(placaBaseId);
-            return Ok(lista);
+            return Ok(await _service.GetAlmacenamientosCompatibles(placaBaseId));
         }
 
         [HttpGet("fuentes-compatibles/{ensamblajeId:int}")]
-        public async Task<ActionResult<List<FuentePoder>>> GetFuentesCompatibles(int ensamblajeId)
+        public async Task<IActionResult> GetFuentesCompatibles(int ensamblajeId)
         {
-            var lista = await _service.GetFuentesCompatibles(ensamblajeId);
-            return Ok(lista);
+            return Ok(await _service.GetFuentesCompatibles(ensamblajeId));
         }
     }
 }
