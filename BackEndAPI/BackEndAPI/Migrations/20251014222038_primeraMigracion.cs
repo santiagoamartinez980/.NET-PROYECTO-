@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BackEndAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class CreacionInicial : Migration
+    public partial class primeraMigracion : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,8 +27,10 @@ namespace BackEndAPI.Migrations
                     TipoMemoria = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Socket = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PlacaBase_TipoMemoria = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TipoAlmacenamiento = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Procesador_Socket = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConsumoWatts = table.Column<int>(type: "int", nullable: true)
+                    ConsumoWatts = table.Column<int>(type: "int", nullable: true),
+                    TarjetaGrafica_ConsumoWatts = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -45,7 +47,9 @@ namespace BackEndAPI.Migrations
                     Apellidos = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Correo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Documento = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HashContraseña = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Rol = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

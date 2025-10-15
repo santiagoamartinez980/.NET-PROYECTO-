@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEndAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251001003919_ValidadoresNecesarios")]
-    partial class ValidadoresNecesarios
+    [Migration("20251014222038_primeraMigracion")]
+    partial class primeraMigracion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
