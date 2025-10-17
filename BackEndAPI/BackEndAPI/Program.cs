@@ -48,5 +48,15 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.MapControllers();
 
+builder.Services.AddCors();
+app.UseCors(options =>
+{
+    options.WithOrigins("http://localhost:4200")
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+});
+
+app.UseAuthorization();
+
 app.Run();
 

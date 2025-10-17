@@ -1,8 +1,9 @@
-export interface ProductInterface {
+export interface PlacaBaseInterface {
     id: number;
     nombre: string;
     marca: string;
     urlImagen: string;
     socket: string;
-    ConsumoWatts: number;
+    TipoMemoria: string;
+    TipoAlmacenamiento: string;
 }

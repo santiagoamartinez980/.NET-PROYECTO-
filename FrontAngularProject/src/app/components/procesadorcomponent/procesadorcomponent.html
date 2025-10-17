@@ -1,0 +1,48 @@
+
+<div class="selector-container">
+  <!-- IZQUIERDA: lista de tarjetas -->
+  <div class="lista-tarjetas" role="list">
+    @for (p of procesadorList; track p.id) {
+      <button
+        type="button" class="tarjeta"(click)="seleccionarProcesador(p)"
+        [class.activa]="procesadorSeleccionado?.id === p.id" role="listitem"
+        [attr.aria-pressed]="procesadorSeleccionado?.id === p.id"
+      >
+        <div class="thumb">
+          <img [src]="p.urlImagen" alt="Imagen de {{ p.nombre }}" loading="lazy" />
+        </div>
+        <div class="info">
+          <p class="titulo">{{ p.nombre }}</p>
+          <p class="marca">{{ p.marca }}</p>
+        </div>
+      </button>
+    }
+  </div>
+
+  
+  <aside class="tarjeta-detalle" aria-live="polite">
+    @if (procesadorSeleccionado) {
+      <div class="contenido">
+        <h3 class="detalle-titulo">{{ procesadorSeleccionado.nombre }}</h3>
+        <div class="imagen-grande-wrap">
+          <img [src]="procesadorSeleccionado.urlImagen"
+              alt="Imagen grande de {{ procesadorSeleccionado.nombre }}"
+              loading="lazy" />
+        </div>
+
+        <div class="especificaciones">
+          <h4>ESPECIFICACIONES</h4>
+          <p><strong>Marca:</strong> {{ procesadorSeleccionado.marca }}</p>
+          <p *ngIf="procesadorSeleccionado.frecuencia"><strong>Frecuencia:</strong> {{ procesadorSeleccionado.socket }} GHz</p>
+          <p *ngIf="procesadorSeleccionado.socket"><strong>Socket:</strong> {{ procesadorSeleccionado.socket }}</p>
+        </div>
+        <button class="btn-next" (click)="continuar()">Siguiente</button>
+      </div>
+    } @else {
+      <div class="estado-inicial">
+        <h3>Selecciona un procesador</h3>
+        <p>Aquí verás la vista ampliada y las especificaciones.</p>
+      </div>
+    }
+  </aside>
+</div>
