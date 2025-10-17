@@ -1,4 +1,4 @@
-﻿using BackEndAPI.Models;
+﻿using BackEndAPI.DTOs.Componentes;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,10 +6,9 @@ namespace BackEndAPI.Services.Contrato.Componentes
 {
     public interface IConsultaComponentes
     {
-        
-        Task<Componente?> GetComponentePorId(int id);
-
-        Task<List<Componente>> GetComponentesPorTipo(string tipo);
-        Task<List<Componente>> BuscarPorMarca(string marca);
+        Task<ComponenteDto?> GetComponentePorId(int id);
+        Task<List<ComponenteDto>> BuscarComponentes(string nombre);
+        Task<List<ComponenteDto>> BuscarPorMarca(string marca);
+        Task<List<ComponenteDto>> GetComponentesPorTipo(string tipo);
     }
 }

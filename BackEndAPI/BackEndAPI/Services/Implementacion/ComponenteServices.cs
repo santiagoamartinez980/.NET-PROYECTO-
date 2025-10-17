@@ -1,96 +1,52 @@
-﻿using BackEndAPI.Data;
+﻿using AutoMapper;
+using BackEndAPI.Data;
+using BackEndAPI.DTOs.Componentes;
 using BackEndAPI.Models;
 using BackEndAPI.Models.Componentes;
 using BackEndAPI.Services.Contrato.Componentes;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BackEndAPI.Services.Implementacion
 {
     public class ComponenteServices : IComponentesCompleto
     {
         private readonly AppDbContext _context;
+        private readonly IMapper _mapper;
 
-        public ComponenteServices(AppDbContext context)
+        public ComponenteServices(AppDbContext context, IMapper mapper)
         {
             _context = context;
-        }
-        //Aqui van la logica del ensabalaje
-        public async Task<List<Procesador>> GetProcesadores()
-        {
-            return await _context.Set<Procesador>().ToListAsync();
+            _mapper = mapper;
         }
 
-        public async Task<List<PlacaBase>> GetPlacasCompatibles(int procesadorId)
+        public async Task<List<ComponenteDto>> GetComponentes()
         {
-            var procesador = await _context.Set<Procesador>().FindAsync(procesadorId);
-            if (procesador == null) return new List<PlacaBase>();
-            return await _context.Set<PlacaBase>()
-                .Where(p => p.Socket == procesador.Socket)
-                .ToListAsync();
+            var lista = await _context.Componentes.ToListAsync();
+            return _mapper.Map<List<ComponenteDto>>(lista);
         }
 
-        public async Task<List<MemoriaRAM>> GetMemoriasCompatibles(int placaBaseId)
+        public async Task<ComponenteDto?> GetComponentePorId(int id)
         {
-            var placaBase = await _context.Set<PlacaBase>().FindAsync(placaBaseId);
-            if (placaBase == null) return new List<MemoriaRAM>();
-            return await _context.Set<MemoriaRAM>()
-                .Where(m => m.TipoMemoria == placaBase.TipoMemoria)
-                .ToListAsync();
+            var componente = await _context.Componentes.FindAsync(id);
+            return componente == null ? null : _mapper.Map<ComponenteDto>(componente);
         }
 
-        public async Task<List<TarjetaGrafica>> GetTarjetasCompatibles(int placaBaseId)
+        public async Task<ComponenteDto> AddComponente(ComponenteDto dto)
         {
-            return await _context.Set<TarjetaGrafica>().ToListAsync();
-        }
-
-        public async Task<List<Almacenamiento>> GetAlmacenamientosCompatibles(int placaBaseId)
-        {
-            var placaBase = await _context.Set<PlacaBase>().FindAsync(placaBaseId);
-            if (placaBase == null) return new List<Almacenamiento>();
-            return await _context.Set<Almacenamiento>()
-                .Where(a => a.Interfaz == placaBase.TipoAlmacenamiento)
-                .ToListAsync();
-        }
-
-        public async Task<List<FuentePoder>> GetFuentesCompatibles(int ensamblajeId)
-        {
-            var ensamblaje = await _context.Ensamblajes
-                .Include(e => e.Procesador)
-                .Include(e => e.TarjetaGrafica)
-                .FirstOrDefaultAsync(e => e.Id == ensamblajeId);
-            if (ensamblaje == null) return new List<FuentePoder>();
-            int consumoTotal = 0;
-            if (ensamblaje.Procesador != null)
-                consumoTotal += ensamblaje.Procesador.ConsumoWatts;
-            if (ensamblaje.TarjetaGrafica != null)
-                consumoTotal += ensamblaje.TarjetaGrafica.ConsumoWatts;
-            consumoTotal = (int)(consumoTotal * 1.2); // 20% mas por si acaso
-            return await _context.Set<FuentePoder>()
-                .Where(f => f.PotenciaWatts >= consumoTotal)
-                .OrderBy(f => f.PotenciaWatts)
-                .ToListAsync();
-        }
-        //ADMIN metodos
-        public async Task<List<Componente>> GetComponentes()
-        {
-            return await _context.Componentes.ToListAsync();
-        }
-
-        public async Task<Componente> AddComponente(Componente modelo)
-        {
-            _context.Componentes.Add(modelo);
+            var entidad = _mapper.Map<Componente>(dto);
+            _context.Componentes.Add(entidad);
             await _context.SaveChangesAsync();
-            return modelo;
+            return _mapper.Map<ComponenteDto>(entidad);
         }
 
-        public async Task<Componente> Update(Componente modelo)
+
+        public async Task<ComponenteDto> Update(ComponenteDto dto)
         {
-            _context.Componentes.Update(modelo);
+            var entidad = _mapper.Map<Componente>(dto);
+            _context.Componentes.Update(entidad);
             await _context.SaveChangesAsync();
-            return modelo;
+            return _mapper.Map<ComponenteDto>(entidad);
         }
 
         public async Task<bool> Delete(int id)
@@ -101,31 +57,102 @@ namespace BackEndAPI.Services.Implementacion
             await _context.SaveChangesAsync();
             return true;
         }
-        //aqui lo de busqueda y navegacion
-        public async Task<Componente?> GetComponentePorId(int id)
-        {
-            return await _context.Componentes.FindAsync(id);
-        }
 
-        public async Task<List<Componente>> BuscarComponentes(string nombre)
+        public async Task<List<ComponenteDto>> BuscarComponentes(string nombre)
         {
-            return await _context.Componentes
+            var lista = await _context.Componentes
                 .Where(c => c.Nombre.Contains(nombre))
                 .ToListAsync();
+            return _mapper.Map<List<ComponenteDto>>(lista);
         }
 
-        public async Task<List<Componente>> GetComponentesPorTipo(string tipo)
+        public async Task<List<ComponenteDto>> BuscarPorMarca(string marca)
         {
-            return await _context.Componentes
-                .Where(c => c.GetType().Name == tipo)
-                .ToListAsync();
-        }
-
-        public async Task<List<Componente>> BuscarPorMarca(string marca)
-        {
-            return await _context.Componentes
+            var lista = await _context.Componentes
                 .Where(c => c.Marca.Contains(marca))
                 .ToListAsync();
+            return _mapper.Map<List<ComponenteDto>>(lista);
+        }
+
+        public async Task<List<ComponenteDto>> GetComponentesPorTipo(string tipo)
+        {
+            var lista = await _context.Componentes
+                .Where(c => c.GetType().Name == tipo)
+                .ToListAsync();
+            return _mapper.Map<List<ComponenteDto>>(lista);
+        }
+
+        public async Task<List<ProcesadorDto>> GetProcesadores()
+        {
+            var lista = await _context.Set<Procesador>().ToListAsync();
+            return _mapper.Map<List<ProcesadorDto>>(lista);
+        }
+
+        public async Task<List<PlacaBaseDto>> GetPlacasCompatibles(int procesadorId)
+        {
+            var procesador = await _context.Set<Procesador>().FindAsync(procesadorId);
+            if (procesador == null) return new List<PlacaBaseDto>();
+
+            var lista = await _context.Set<PlacaBase>()
+                .Where(p => p.Socket == procesador.Socket)
+                .ToListAsync();
+
+            return _mapper.Map<List<PlacaBaseDto>>(lista);
+        }
+
+        public async Task<List<MemoriaRamDto>> GetMemoriasCompatibles(int placaBaseId)
+        {
+            var placa = await _context.Set<PlacaBase>().FindAsync(placaBaseId);
+            if (placa == null) return new List<MemoriaRamDto>();
+
+            var lista = await _context.Set<MemoriaRAM>()
+                .Where(m => m.TipoMemoria == placa.TipoMemoria)
+                .ToListAsync();
+
+            return _mapper.Map<List<MemoriaRamDto>>(lista);
+        }
+
+        public async Task<List<TarjetaGraficaDto>> GetTarjetasCompatibles(int placaBaseId)
+        {
+            var lista = await _context.Set<TarjetaGrafica>().ToListAsync();
+            return _mapper.Map<List<TarjetaGraficaDto>>(lista);
+        }
+
+        public async Task<List<AlmacenamientoDto>> GetAlmacenamientosCompatibles(int placaBaseId)
+        {
+            var placa = await _context.Set<PlacaBase>().FindAsync(placaBaseId);
+            if (placa == null) return new List<AlmacenamientoDto>();
+
+            var lista = await _context.Set<Almacenamiento>()
+                .Where(a => a.Interfaz == placa.TipoAlmacenamiento)
+                .ToListAsync();
+
+            return _mapper.Map<List<AlmacenamientoDto>>(lista);
+        }
+
+        public async Task<List<FuentePoderDto>> GetFuentesCompatibles(int ensamblajeId)
+        {
+            var ensamblaje = await _context.Ensamblajes
+                .Include(e => e.Procesador)
+                .Include(e => e.TarjetaGrafica)
+                .FirstOrDefaultAsync(e => e.Id == ensamblajeId);
+
+            if (ensamblaje == null) return new List<FuentePoderDto>();
+
+            int consumoTotal = 0;
+            if (ensamblaje.Procesador != null)
+                consumoTotal += ensamblaje.Procesador.ConsumoWatts;
+            if (ensamblaje.TarjetaGrafica != null)
+                consumoTotal += ensamblaje.TarjetaGrafica.ConsumoWatts;
+
+            consumoTotal = (int)(consumoTotal * 1.2);
+
+            var lista = await _context.Set<FuentePoder>()
+                .Where(f => f.PotenciaWatts >= consumoTotal)
+                .OrderBy(f => f.PotenciaWatts)
+                .ToListAsync();
+
+            return _mapper.Map<List<FuentePoderDto>>(lista);
         }
     }
 }
