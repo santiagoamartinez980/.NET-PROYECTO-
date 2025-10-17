@@ -40,6 +40,7 @@ namespace BackEndAPI.Services.Implementacion
             return _mapper.Map<ComponenteDto>(entidad);
         }
 
+
         public async Task<ComponenteDto> Update(ComponenteDto dto)
         {
             var entidad = _mapper.Map<Componente>(dto);

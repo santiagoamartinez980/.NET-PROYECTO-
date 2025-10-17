@@ -22,7 +22,22 @@ namespace BackEndAPI.Mappings
             #endregion
 
             #region Componentes
-            CreateMap<Componente, ComponenteDto>().ReverseMap();
+            CreateMap<ComponenteDto, Componente>()
+                .Include<ProcesadorDto, Procesador>()
+                .Include<PlacaBaseDto, PlacaBase>()
+                .Include<MemoriaRamDto, MemoriaRAM>()
+                .Include<TarjetaGraficaDto, TarjetaGrafica>()
+                .Include<AlmacenamientoDto, Almacenamiento>()
+                .Include<FuentePoderDto, FuentePoder>();
+
+            CreateMap<Componente, ComponenteDto>()
+                .Include<Procesador, ProcesadorDto>()
+                .Include<PlacaBase, PlacaBaseDto>()
+                .Include<MemoriaRAM, MemoriaRamDto>()
+                .Include<TarjetaGrafica, TarjetaGraficaDto>()
+                .Include<Almacenamiento, AlmacenamientoDto>()
+                .Include<FuentePoder, FuentePoderDto>();
+
             CreateMap<Procesador, ProcesadorDto>().ReverseMap();
             CreateMap<PlacaBase, PlacaBaseDto>().ReverseMap();
             CreateMap<MemoriaRAM, MemoriaRamDto>().ReverseMap();
@@ -32,4 +47,4 @@ namespace BackEndAPI.Mappings
             #endregion
         }
     }
-}
+ }

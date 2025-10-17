@@ -54,7 +54,7 @@ namespace BackEndAPI.Controllers
         {
             var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-            ComponenteDto? dto = tipo.ToLower() switch
+            object? dto = tipo.ToLower() switch
             {
                 "procesador" => JsonSerializer.Deserialize<ProcesadorDto>(modelo.ToString(), options),
                 "placabase" => JsonSerializer.Deserialize<PlacaBaseDto>(modelo.ToString(), options),
@@ -67,9 +67,22 @@ namespace BackEndAPI.Controllers
 
             if (dto == null) return BadRequest("Tipo de componente no válido.");
 
-            var creado = await _service.AddComponente(dto);
+            var creado = tipo.ToLower() switch
+            {
+                "procesador" => await _service.AddComponente((ProcesadorDto)dto),
+                "placabase" => await _service.AddComponente((PlacaBaseDto)dto),
+                "memoriaram" => await _service.AddComponente((MemoriaRamDto)dto),
+                "tarjetagrafica" => await _service.AddComponente((TarjetaGraficaDto)dto),
+                "almacenamiento" => await _service.AddComponente((AlmacenamientoDto)dto),
+                "fuentepoder" => await _service.AddComponente((FuentePoderDto)dto),
+                _ => null
+            };
+
+            if (creado == null) return BadRequest("No se pudo crear el componente.");
+
             return CreatedAtAction(nameof(GetComponentePorId), new { id = creado.Id }, creado);
         }
+
 
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] ComponenteDto dto)
