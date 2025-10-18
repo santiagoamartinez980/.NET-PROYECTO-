@@ -33,8 +33,10 @@
         <div class="especificaciones">
           <h4>ESPECIFICACIONES</h4>
           <p><strong>Marca:</strong> {{ procesadorSeleccionado.marca }}</p>
-          <p *ngIf="procesadorSeleccionado.frecuencia"><strong>Frecuencia:</strong> {{ procesadorSeleccionado.socket }} GHz</p>
-          <p *ngIf="procesadorSeleccionado.socket"><strong>Socket:</strong> {{ procesadorSeleccionado.socket }}</p>
+          @if(procesadorSeleccionado.id) {
+            <p><strong>Frecuencia:</strong> {{ procesadorSeleccionado.frecuencia }} GHz</p>
+            <p><strong>Socket:</strong> {{ procesadorSeleccionado.socket }}</p>
+          }
         </div>
         <button class="btn-next" (click)="continuar()">Siguiente</button>
       </div>

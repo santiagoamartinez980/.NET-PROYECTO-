@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { ProcesadorService } from '../../service/procesadorservice';
-import { CommonModule } from '@angular/common';
 import { Eleccionservice } from '../../service/eleccionservice';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-procesadorcomponent',
-  imports: [CommonModule],
   standalone: true,
   templateUrl: './procesadorcomponent.html',
   styleUrl: './procesadorcomponent.css'
@@ -38,6 +36,7 @@ export class Procesadorcomponent {
       this.eleccionService.setProcesador(this.procesadorSeleccionado.id);
       this.router.navigate(['/placabase']);
       console.log('Procesador seleccionado:', this.procesadorSeleccionado.id);
+      
     }
   }
 }
