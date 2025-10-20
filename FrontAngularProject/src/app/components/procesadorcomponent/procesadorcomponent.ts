@@ -5,7 +5,11 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-procesadorcomponent',
+<<<<<<< HEAD
   standalone: true,
+=======
+  imports: [],
+>>>>>>> origin/devNieto
   templateUrl: './procesadorcomponent.html',
   styleUrl: './procesadorcomponent.css'
 })
