@@ -53,35 +53,75 @@ namespace BackEndAPI.Controllers
         public async Task<IActionResult> AddComponente(string tipo, [FromBody] JsonElement modelo)
         {
             var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            bool esLista = modelo.ValueKind == JsonValueKind.Array;
 
             object? dto = tipo.ToLower() switch
             {
-                "procesador" => JsonSerializer.Deserialize<ProcesadorDto>(modelo.ToString(), options),
-                "placabase" => JsonSerializer.Deserialize<PlacaBaseDto>(modelo.ToString(), options),
-                "memoriaram" => JsonSerializer.Deserialize<MemoriaRamDto>(modelo.ToString(), options),
-                "tarjetagrafica" => JsonSerializer.Deserialize<TarjetaGraficaDto>(modelo.ToString(), options),
-                "almacenamiento" => JsonSerializer.Deserialize<AlmacenamientoDto>(modelo.ToString(), options),
-                "fuentepoder" => JsonSerializer.Deserialize<FuentePoderDto>(modelo.ToString(), options),
+                "procesador" => esLista
+                    ? JsonSerializer.Deserialize<List<ProcesadorDto>>(modelo.ToString(), options)
+                    : new List<ProcesadorDto> { JsonSerializer.Deserialize<ProcesadorDto>(modelo.ToString(), options)! },
+
+                "placabase" => esLista
+                    ? JsonSerializer.Deserialize<List<PlacaBaseDto>>(modelo.ToString(), options)
+                    : new List<PlacaBaseDto> { JsonSerializer.Deserialize<PlacaBaseDto>(modelo.ToString(), options)! },
+
+                "memoriaram" => esLista
+                    ? JsonSerializer.Deserialize<List<MemoriaRamDto>>(modelo.ToString(), options)
+                    : new List<MemoriaRamDto> { JsonSerializer.Deserialize<MemoriaRamDto>(modelo.ToString(), options)! },
+
+                "tarjetagrafica" => esLista
+                    ? JsonSerializer.Deserialize<List<TarjetaGraficaDto>>(modelo.ToString(), options)
+                    : new List<TarjetaGraficaDto> { JsonSerializer.Deserialize<TarjetaGraficaDto>(modelo.ToString(), options)! },
+
+                "almacenamiento" => esLista
+                    ? JsonSerializer.Deserialize<List<AlmacenamientoDto>>(modelo.ToString(), options)
+                    : new List<AlmacenamientoDto> { JsonSerializer.Deserialize<AlmacenamientoDto>(modelo.ToString(), options)! },
+
+                "fuentepoder" => esLista
+                    ? JsonSerializer.Deserialize<List<FuentePoderDto>>(modelo.ToString(), options)
+                    : new List<FuentePoderDto> { JsonSerializer.Deserialize<FuentePoderDto>(modelo.ToString(), options)! },
+
                 _ => null
             };
 
             if (dto == null) return BadRequest("Tipo de componente no válido.");
 
-            var creado = tipo.ToLower() switch
+            var creados = new List<ComponenteDto>();
+
+            switch (tipo.ToLower())
             {
-                "procesador" => await _service.AddComponente((ProcesadorDto)dto),
-                "placabase" => await _service.AddComponente((PlacaBaseDto)dto),
-                "memoriaram" => await _service.AddComponente((MemoriaRamDto)dto),
-                "tarjetagrafica" => await _service.AddComponente((TarjetaGraficaDto)dto),
-                "almacenamiento" => await _service.AddComponente((AlmacenamientoDto)dto),
-                "fuentepoder" => await _service.AddComponente((FuentePoderDto)dto),
-                _ => null
-            };
+                case "procesador":
+                    foreach (var d in (List<ProcesadorDto>)dto)
+                        creados.Add(await _service.AddComponente(d));
+                    break;
+                case "placabase":
+                    foreach (var d in (List<PlacaBaseDto>)dto)
+                        creados.Add(await _service.AddComponente(d));
+                    break;
+                case "memoriaram":
+                    foreach (var d in (List<MemoriaRamDto>)dto)
+                        creados.Add(await _service.AddComponente(d));
+                    break;
+                case "tarjetagrafica":
+                    foreach (var d in (List<TarjetaGraficaDto>)dto)
+                        creados.Add(await _service.AddComponente(d));
+                    break;
+                case "almacenamiento":
+                    foreach (var d in (List<AlmacenamientoDto>)dto)
+                        creados.Add(await _service.AddComponente(d));
+                    break;
+                case "fuentepoder":
+                    foreach (var d in (List<FuentePoderDto>)dto)
+                        creados.Add(await _service.AddComponente(d));
+                    break;
+                default:
+                    return BadRequest("Tipo no soportado");
+            }
 
-            if (creado == null) return BadRequest("No se pudo crear el componente.");
-
-            return CreatedAtAction(nameof(GetComponentePorId), new { id = creado.Id }, creado);
+            return Ok(creados);
         }
+
+
 
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] ComponenteDto dto)
