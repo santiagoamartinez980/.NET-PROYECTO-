@@ -1,1 +1,56 @@
-<p>almacenamientocomponent works!</p>
+<div class="selector-container">
+  <div class="lista-tarjetas" role="list">
+    @for (p of almacenamientoList; track p.id) {
+    <button type="button" class="tarjeta" (click)="seleccionarAlmacenamiento(p)"
+      [class.activa]="almacenamientoSeleccionado?.id === p.id" role="listitem"
+      [attr.aria-pressed]="almacenamientoSeleccionado?.id === p.id"
+    >
+      <div class="thumb">
+        <img [src]="p.urlImagen" alt="Imagen de {{ p.nombre }}" loading="lazy" />
+      </div>
+      <div class="info">
+        <p class="titulo">{{ p.nombre }}</p>
+        <p class="marca">{{ p.marca }}</p>
+      </div>
+    </button>
+    }
+  </div>
+
+
+
+  <aside class="tarjeta-detalle" aria-live="polite">
+    @if (almacenamientoSeleccionado) {
+    <div class="contenido">
+      <h3 class="detalle-titulo">{{ almacenamientoSeleccionado.nombre }}</h3>
+      <div class="imagen-grande-wrap">
+        <img
+          [src]="almacenamientoSeleccionado.urlImagen"
+          alt="Imagen grande de {{ almacenamientoSeleccionado.nombre }}"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="especificaciones">
+        <h4>ESPECIFICACIONES</h4>
+        @if (almacenamientoSeleccionado.id) {
+            <p>
+                <strong>Marca:</strong> {{ almacenamientoSeleccionado.marca }}
+            </p>
+            <p>
+                <strong>Interfaz:</strong> {{ almacenamientoSeleccionado.interfaz }}
+            </p>
+            <p>
+                <strong>Tipo de almacenamiento:</strong> {{almacenamientoSeleccionado.tipo }}
+            </p>
+        }
+      </div>
+      <button class="btn-next" (click)="continuar()">Siguiente</button>
+    </div>
+    } @else {
+    <div class="estado-inicial">
+      <h3>Selecciona un almacenamiento</h3>
+      <p>Aquí verás la vista ampliada y las especificaciones.</p>
+    </div>
+    }
+  </aside>
+</div>

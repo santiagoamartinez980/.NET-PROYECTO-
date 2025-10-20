@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-procesadorcomponent',
-  imports: [CommonModule],
-  standalone: true,
+  imports: [],
   templateUrl: './procesadorcomponent.html',
   styleUrl: './procesadorcomponent.css'
 })

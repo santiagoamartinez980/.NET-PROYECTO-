@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Placabaseservice } from '../../service/placabaseservice';
 import { Eleccionservice } from '../../service/eleccionservice';
-import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-placabasecomponent',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './placabasecomponent.html',
   styleUrl: './placabasecomponent.css'
 })
@@ -17,7 +17,7 @@ export class Placabasecomponent {
       this.getPlacas();
 
     }
-    constructor(private placabaseService:Placabaseservice, private eleccionService:Eleccionservice){}
+    constructor(private placabaseService:Placabaseservice, private eleccionService:Eleccionservice, private router:Router){}
   
     getPlacas(){
       this.placabaseService.getPlacasCompatibles(this.eleccionService.getProcesador()).subscribe({
@@ -37,6 +37,8 @@ export class Placabasecomponent {
   continuar() {
     if (this.placaSeleccionada) {
       this.eleccionService.setPlacaBase(this.placaSeleccionada.id);
+      console.log('➡️ Navegando con placa:', this.placaSeleccionada.id);
+      this.router.navigate(['/memoriaram']);
     }
   }
 }

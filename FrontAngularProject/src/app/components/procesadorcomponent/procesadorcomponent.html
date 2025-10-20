@@ -3,8 +3,7 @@
   <!-- IZQUIERDA: lista de tarjetas -->
   <div class="lista-tarjetas" role="list">
     @for (p of procesadorList; track p.id) {
-      <button
-        type="button" class="tarjeta"(click)="seleccionarProcesador(p)"
+      <button type="button" class="tarjeta" (click)="seleccionarProcesador(p)" 
         [class.activa]="procesadorSeleccionado?.id === p.id" role="listitem"
         [attr.aria-pressed]="procesadorSeleccionado?.id === p.id"
       >
@@ -32,9 +31,16 @@
 
         <div class="especificaciones">
           <h4>ESPECIFICACIONES</h4>
-          <p><strong>Marca:</strong> {{ procesadorSeleccionado.marca }}</p>
-          <p *ngIf="procesadorSeleccionado.frecuencia"><strong>Frecuencia:</strong> {{ procesadorSeleccionado.socket }} GHz</p>
-          <p *ngIf="procesadorSeleccionado.socket"><strong>Socket:</strong> {{ procesadorSeleccionado.socket }}</p>
+          @if(procesadorSeleccionado.id) {
+            <p>
+              <strong>Marca:</strong> {{ procesadorSeleccionado.marca }}
+            <p>
+              <strong>ComsumoWatts:</strong> {{ procesadorSeleccionado.consumoWatts }} W
+            </p>
+            <p>
+              <strong>Socket:</strong> {{ procesadorSeleccionado.socket }}
+            </p>
+          }
         </div>
         <button class="btn-next" (click)="continuar()">Siguiente</button>
       </div>
@@ -45,4 +51,4 @@
       </div>
     }
   </aside>
-</div>
+</div>>

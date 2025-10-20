@@ -12,11 +12,12 @@
 /* 🔹 Contenedor izquierdo con las tarjetas */
 .lista-tarjetas {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 2rem;
   overflow-y: auto;
   border-right: 1px solid #eee;
   padding-right: 1%;
+  
 }
 
 /* 🔹 Cada tarjeta (imagen + nombre) */
@@ -61,7 +62,7 @@
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-  padding: 1.5rem;
+  padding: 2rem;
   max-width: 400px;
   display: flex;
   align-items: center;
