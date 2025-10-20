@@ -49,7 +49,7 @@ namespace BackEndAPI.Controllers
             return Ok(await _service.GetComponentesPorTipo(tipo));
         }
 
-        [HttpPost("{tipo}")]
+        [HttpPost("{tipo}")] //se mdoifico con el fin de recibir diferentes tipos de componentes y subirlos al mismo tiempo conpartiendo el discriminador
         public async Task<IActionResult> AddComponente(string tipo, [FromBody] JsonElement modelo)
         {
             var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };

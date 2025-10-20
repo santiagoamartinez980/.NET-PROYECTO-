@@ -2,6 +2,6 @@
 {
     public class MemoriaRAM: Componente
     {
-        public string TipoMemoria { get; set; }
+        public string TipoMemoria { get; set; } = null!;
     }
 }
