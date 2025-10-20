@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Placabaseservice } from '../../service/placabaseservice';
 import { Eleccionservice } from '../../service/eleccionservice';
 import { Router } from '@angular/router';
@@ -17,13 +17,18 @@ export class Placabasecomponent {
       this.getPlacas();
 
     }
-    constructor(private placabaseService:Placabaseservice, private eleccionService:Eleccionservice, private router:Router){}
+    constructor(
+      private placabaseService:Placabaseservice, 
+      private eleccionService:Eleccionservice, 
+      private router:Router,
+      private cdr: ChangeDetectorRef){}
   
     getPlacas(){
       this.placabaseService.getPlacasCompatibles(this.eleccionService.getProcesador()).subscribe({
         next:(data)=>{
           console.log('Placas compatibles:', data);
           this.placaList=data;
+          this.cdr.detectChanges();
         },
         error:(error)=>console.log(error)
       })
