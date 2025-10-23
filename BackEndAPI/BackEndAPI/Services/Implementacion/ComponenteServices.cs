@@ -129,20 +129,19 @@ namespace BackEndAPI.Services.Implementacion
             return _mapper.Map<List<AlmacenamientoDto>>(lista);
         }
 
-        public async Task<List<FuentePoderDto>> GetFuentesCompatibles(int ensamblajeId)
+        public async Task<List<FuentePoderDto>> GetFuentesCompatibles(int procesadorId, int tarjetaGraficaId)
         {
-            var ensamblaje = await _context.Ensamblajes
-                .Include(e => e.Procesador)
-                .Include(e => e.TarjetaGrafica)
-                .FirstOrDefaultAsync(e => e.Id == ensamblajeId);
+            var procesador = await _context.Set<Procesador>().FindAsync(procesadorId);
+            var tarjetaGrafica = await _context.Set<TarjetaGrafica>().FindAsync(tarjetaGraficaId);
 
-            if (ensamblaje == null) return new List<FuentePoderDto>();
+            if (procesador == null) return new List<FuentePoderDto>();
+            if (tarjetaGrafica  == null) return new List<FuentePoderDto>();
 
             int consumoTotal = 0;
-            if (ensamblaje.Procesador != null)
-                consumoTotal += ensamblaje.Procesador.ConsumoWatts;
-            if (ensamblaje.TarjetaGrafica != null)
-                consumoTotal += ensamblaje.TarjetaGrafica.ConsumoWatts;
+            if (procesador != null)
+                consumoTotal += procesador.ConsumoWatts;
+            if (tarjetaGrafica != null)
+                consumoTotal += tarjetaGrafica.ConsumoWatts;
 
             consumoTotal = (int)(consumoTotal * 1.2);
 

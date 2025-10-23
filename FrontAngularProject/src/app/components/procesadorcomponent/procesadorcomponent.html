@@ -31,12 +31,6 @@
 
         <div class="especificaciones">
           <h4>ESPECIFICACIONES</h4>
-<<<<<<< HEAD
-          <p><strong>Marca:</strong> {{ procesadorSeleccionado.marca }}</p>
-          @if(procesadorSeleccionado.id) {
-            <p><strong>Frecuencia:</strong> {{ procesadorSeleccionado.frecuencia }} GHz</p>
-            <p><strong>Socket:</strong> {{ procesadorSeleccionado.socket }}</p>
-=======
           @if(procesadorSeleccionado.id) {
             <p>
               <strong>Marca:</strong> {{ procesadorSeleccionado.marca }}
@@ -46,7 +40,6 @@
             <p>
               <strong>Socket:</strong> {{ procesadorSeleccionado.socket }}
             </p>
->>>>>>> origin/devNieto
           }
         </div>
         <button class="btn-next" (click)="continuar()">Siguiente</button>

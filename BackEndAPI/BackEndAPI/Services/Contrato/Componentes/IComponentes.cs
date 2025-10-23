@@ -11,6 +11,6 @@ namespace BackEndAPI.Services.Contrato.Componentes
         Task<List<MemoriaRamDto>> GetMemoriasCompatibles(int placaBaseId);
         Task<List<TarjetaGraficaDto>> GetTarjetasCompatibles(int placaBaseId);
         Task<List<AlmacenamientoDto>> GetAlmacenamientosCompatibles(int placaBaseId);
-        Task<List<FuentePoderDto>> GetFuentesCompatibles(int ensamblajeId);
+        Task<List<FuentePoderDto>> GetFuentesCompatibles(int procesadorId, int tarjetaGraficaid);
     }
 }

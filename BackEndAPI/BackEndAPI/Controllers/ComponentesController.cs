@@ -169,10 +169,15 @@ namespace BackEndAPI.Controllers
             return Ok(await _service.GetAlmacenamientosCompatibles(placaBaseId));
         }
 
-        [HttpGet("fuentes-compatibles/{ensamblajeId:int}")]
-        public async Task<IActionResult> GetFuentesCompatibles(int ensamblajeId)
+        [HttpGet("fuentes-compatibles")]
+        public async Task<IActionResult> GetFuentesCompatibles([FromQuery] int procesadorId, [FromQuery] int tarjetaGraficaId)
         {
-            return Ok(await _service.GetFuentesCompatibles(ensamblajeId));
+            if (procesadorId <= 0 || tarjetaGraficaId <= 0)
+                return BadRequest("Debe proporcionar IDs válidos para el procesador y la tarjeta gráfica.");
+
+            var resultado = await _service.GetFuentesCompatibles(procesadorId, tarjetaGraficaId);
+            return Ok(resultado);
         }
+
     }
 }
